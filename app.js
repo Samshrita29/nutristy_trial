@@ -153,9 +153,15 @@ app.post('/login',function(req,res){
 app.get("/register",(req,res)=>{
     res.render("register");
 });
-app.post("/register",(req,res)=>{
-    
-    User.register(new User({username: req.body.username,phone:req.body.phone,email: req.body.email}) ,req.body.password,function(err,user){
+app.post("/register",(req,res)=>
+{ 
+    User.register(new User({username: req.body.username,
+                            phone:req.body.phone,
+                            email: req.body.email,
+                            address:req.body.address,
+                            mealpref:req.body.mealpref,
+                            allergy:req.body.allergy}),req.body.password,function(err,user)
+    {
         if(err){
             console.log(err);
             res.render("register");
